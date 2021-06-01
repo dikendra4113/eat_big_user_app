@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:alpha="0.75"
+    android:background="#000000"
+    tools:context=".MainActivity"
+    tools:ignore="ExtraText">
+
+
+    <TextView
+        android:id="@+id/registerheader1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="160dp"
+        android:text="Verify \nOTP"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgfield1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rect_field" />
+
+
+    <EditText
+        android:id="@+id/otpEditTExt"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:ems="10"
+        android:hint="Enter OTP Here"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/bgfield1"
+        app:layout_constraintEnd_toEndOf="@+id/bgfield1"
+        app:layout_constraintHorizontal_bias="0.649"
+        app:layout_constraintStart_toStartOf="@+id/bgfield1"
+        app:layout_constraintTop_toTopOf="@+id/bgfield1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/verotpbg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bgfield1"
+        app:srcCompat="@drawable/rect_register" />
+
+    <Button
+        android:id="@+id/otpButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00279CA0"
+        android:text="varify otp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/verotpbg"
+        app:layout_constraintEnd_toEndOf="@+id/verotpbg"
+        app:layout_constraintStart_toStartOf="@+id/verotpbg"
+        app:layout_constraintTop_toTopOf="@+id/verotpbg" />
+</androidx.constraintlayout.widget.ConstraintLayout>

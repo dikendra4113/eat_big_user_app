@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:background="@drawable/category_bg"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_margin="20dp"
+    android:layout_marginEnd="20dp">
+
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+
+      <ImageView
+          android:id="@+id/food_iv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/raju_dhaba_iv"
+          android:layout_centerVertical="true"
+          android:layout_alignParentStart="true"/>
+
+
+
+      <ImageView
+          android:id="@+id/veg_nonveg_ic"
+          android:layout_width="15dp"
+          android:layout_height="15dp"
+          android:src="@drawable/veg_ic"
+          android:layout_toRightOf="@+id/food_iv"
+          android:layout_alignParentTop="true"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="10dp"
+          app:tint="@color/green" />
+
+
+
+      <TextView
+          android:id="@+id/food_name_tv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Veg Manchurian (300 gm)"
+          android:textStyle="bold"
+          android:textSize="14sp"
+          android:textColor="@color/black"
+          android:layout_toRightOf="@id/food_iv"
+          android:layout_below="@+id/veg_nonveg_ic"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="10dp"/>
+
+      <TextView
+          android:id="@+id/price_tv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="₹150"
+          android:textSize="14sp"
+          android:layout_below="@id/food_name_tv"
+          android:layout_toRightOf="@+id/food_iv"
+          android:layout_marginLeft="10dp"
+          android:layout_marginTop="5dp"/>
+
+      <ImageView
+          android:id="@+id/border_rect"
+          android:layout_width="50dp"
+          android:layout_height="20dp"
+          android:layout_marginEnd="10dp"
+          android:src="@drawable/rect_bg"
+          android:layout_alignParentEnd="true"
+          android:layout_centerVertical="true"/>
+
+      <TextView
+          android:id="@+id/decrease_quantity"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="-"
+          android:textStyle="bold"
+          android:layout_alignStart="@+id/border_rect"
+          android:layout_alignTop="@+id/border_rect"
+          android:layout_marginLeft="5dp"/>
+
+
+      <TextView
+          android:id="@+id/increase_quantity"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="+"
+          android:textStyle="bold"
+          android:textColor="@color/green"
+          android:layout_alignEnd="@+id/border_rect"
+          android:layout_alignTop="@+id/border_rect"
+          android:layout_marginRight="5dp"/>
+
+      <TextView
+          android:id="@+id/quantity"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="2"
+          android:textStyle="bold"
+          android:textColor="@color/green"
+          android:layout_alignEnd="@+id/border_rect"
+          android:layout_alignTop="@+id/border_rect"
+          android:layout_alignStart="@+id/border_rect"
+          android:gravity="center"/>
+
+
+
+
+   </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

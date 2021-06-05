@@ -64,16 +64,27 @@ public class ProductCartDetailActivity extends AppCompatActivity {
     String saveCurrentDate,saveCurrentTime,randomKey;
     private  String paymentStatus;
     Dialog dialog;
+    private String seat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_cart_detail);
-        cart_recyclerView = findViewById(R.id.cart_RecyclerView);
+        setContentView(R.layout.activity_cart);
+        cart_recyclerView = findViewById(R.id.item_quantity_recycler);
         Button payButton = findViewById(R.id.payButton);
-        total_price = findViewById(R.id.totalPriceText);
+        total_price = findViewById(R.id.totalamount_tv);
+        //coupon section
+        ImageView couponApplyBtn = findViewById(R.id.apply_coupon_btn);
+        TextView couponEditText = findViewById(R.id.apply_coupon_et);
+        TextView payamount = findViewById(R.id.payamount_tv);
+        TextView discount_amount_tv = findViewById(R.id.discount_amount_tv);
+
+
+
         cart_recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dialog = new Dialog(this);
+        Paper.init(this);
+        seat = Paper.book().read(previous_seat);
         phone = getIntent().getStringExtra("phone");
         final FirebaseRecyclerOptions<cartModel> options =
                 new FirebaseRecyclerOptions.Builder<cartModel>()
@@ -92,12 +103,13 @@ public class ProductCartDetailActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar.getTime());
 
         randomKey = saveCurrentDate+saveCurrentTime;
-
+        discount_amount_tv.setText("0");
+        payamount.setText(CartAdapter.overall_price);
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                amount = cartModel.getTotal();
-                dialog.setContentView(R.layout.payment_dialog);
+
+                dialog.setContentView(R.layout.payment_dialogue_box);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 ImageView closebtn = dialog.findViewById(R.id.close_btn);
                 Button cashbtn =  dialog.findViewById(R.id.cash_button);
@@ -138,6 +150,28 @@ public class ProductCartDetailActivity extends AppCompatActivity {
         });
 
 
+        //++++Coupon Apply
+
+        couponApplyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(couponEditText.getText().toString().isEmpty()){
+                    Toast.makeText(ProductCartDetailActivity.this, "Please Enter Valid Coupon Code", Toast.LENGTH_SHORT).show();
+                }else {
+                    if(couponEditText.getText().toString().equalsIgnoreCase("TRYNEW")){
+                        int pay_amt = Integer.parseInt(total_price.getText().toString()) - 75;
+                        payamount.setText(pay_amt+"");
+                        discount_amount_tv.setText("-75");
+                        amount = ""+pay_amt;
+                    }else if(couponEditText.getText().toString().equalsIgnoreCase("GET50")){
+                        int pay_amt = Integer.parseInt(total_price.getText().toString()) - 50;
+                        payamount.setText(pay_amt+"");
+                        amount = ""+pay_amt;
+                        discount_amount_tv.setText("-50");
+                    }
+                }
+            }
+        });
 
     }
 
@@ -145,7 +179,7 @@ public class ProductCartDetailActivity extends AppCompatActivity {
         final DatabaseReference toPath = FirebaseDatabase.getInstance().getReference().child("Order").child("Users View").child(phone);
         final DatabaseReference fromPath = FirebaseDatabase.getInstance().getReference().child("CartList").child("User View").child(phone).child("Products");
         final DatabaseReference adminPath = FirebaseDatabase.getInstance().getReference().child("Order").child("Admins View");
-        final DatabaseReference seatPath = FirebaseDatabase.getInstance().getReference().child("Seats").child(seatNo);
+        final DatabaseReference seatPath = FirebaseDatabase.getInstance().getReference().child("Seats").child(seat);
         ValueEventListener valueEventListener = new ValueEventListener() {
 
             @Override

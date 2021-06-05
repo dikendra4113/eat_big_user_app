@@ -11,4 +11,5 @@ public class Prevelents {
     public static final String phoneKey = "phone";
     public static final String passwordKey= "password";
     public static final String phone = "phone Number";
+    public static final String previous_seat = "Seat Number";
 }

@@ -1,28 +1,329 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity">
+    android:background="@color/grey_white"
+    tools:context=".ProductCartDetailActivity">
+
+    <ImageView
+        android:id="@+id/actionbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:src="@drawable/actionbar_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/cart_hdg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentStart="true"
         android:text="Cart"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/actionbar_bg"
+        app:layout_constraintStart_toStartOf="@id/actionbar_bg"
+        app:layout_constraintTop_toTopOf="@id/actionbar_bg"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemBackground="@color/white"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
-        app:menu="@menu/menu_navigation"
-        android:layout_alignParentBottom="true"/>
+        android:layout_marginTop="53dp"
+        app:layout_constraintTop_toBottomOf="@+id/actionbar_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
 
-</RelativeLayout>
+
+
+
+
+                <ImageView
+                    android:id="@+id/restaurant_name_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/discount_msg_bg"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="-10dp"
+                    android:src="@drawable/actionbar_bg"/>
+
+
+
+
+
+                <ImageView
+                    android:id="@+id/cart_restaurant_ic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sipnbite_ic"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="13dp"/>
+
+                <TextView
+                    android:id="@+id/cart_restaurant_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cart_restaurant_ic"
+                    android:text="Sip &amp; Bite"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marine Drive, Raipur"
+                    android:textSize="10sp"
+                    android:layout_below="@+id/cart_restaurant_tv"
+                    android:layout_toRightOf="@+id/cart_restaurant_ic"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"/>
+
+
+
+                <ImageView
+                    android:id="@+id/discount_msg_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/discount_bg"
+                    android:layout_below="@+id/cart_restaurant_ic"
+                    android:layout_marginTop="-35dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You have saved ₹75 on the bill"
+                    android:textColor="@color/green"
+                    android:textStyle="bold"
+                    android:layout_alignTop="@+id/discount_msg_bg"
+                    android:layout_alignBottom="@+id/discount_msg_bg"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:layout_centerHorizontal="true"/>
+
+
+
+                <ImageView
+                    android:id="@+id/item_quantity_section_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@id/item_quantity_recycler"
+                    android:layout_alignBottom="@+id/item_quantity_recycler"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-10dp"
+                    android:src="@drawable/actionbar_bg"/>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/item_quantity_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/discount_msg_bg"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+
+
+                <ImageView
+                    android:id="@+id/apply_coupon_section_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@id/discount_ic"
+                    android:layout_alignBottom="@+id/discount_ic"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="-10dp"
+                    android:src="@drawable/actionbar_bg"/>
+
+
+
+
+                <ImageView
+                    android:id="@+id/discount_ic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/coupon_ic"
+                    android:layout_below="@id/item_quantity_recycler"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="20dp"/>
+
+                <TextView
+                    android:id="@+id/apply_coupon_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="APPLY COUPON"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/discount_ic"
+                    android:layout_below="@+id/item_quantity_recycler"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"/>
+
+                <EditText
+                    android:id="@+id/apply_coupon_et"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:inputType="textPersonName"
+                    android:hint="Enter Coupon Code"
+                    android:layout_below="@+id/item_quantity_recycler"
+                    android:layout_toRightOf="@id/apply_coupon_tv"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="5dp"
+
+                    android:textAllCaps="true"
+                    android:textSize="10dp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/apply_coupon_btn"
+                    android:src="@drawable/buttonarrow_icon"
+                    app:tint="@color/yellow"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@+id/item_quantity_recycler"
+                    android:layout_toRightOf="@id/apply_coupon_et"
+                    android:layout_marginEnd="20dp"/>
+
+
+
+
+                <ImageView
+                    android:id="@+id/bill_section_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/bill_details_tv"
+                    android:layout_alignBottom="@+id/topay_tv"
+                    android:layout_marginBottom="-10dp"
+                    android:layout_marginTop="-10dp"
+                    android:src="@drawable/actionbar_bg"/>
+
+
+
+
+                <TextView
+                    android:id="@+id/bill_details_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bill Details"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/discount_ic"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/black"/>
+
+
+                <TextView
+                    android:id="@+id/item_total_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item Total"
+                    android:layout_below="@+id/bill_details_tv"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"/>
+
+
+                <TextView
+                    android:id="@+id/totalamount_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹185"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/bill_details_tv"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"/>
+
+                <TextView
+                    android:id="@+id/total_discount_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Discount"
+                    android:layout_below="@+id/item_total_tv"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/green"/>
+
+                <TextView
+                    android:id="@+id/discount_amount_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="- ₹75"
+                    android:textColor="@color/green"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/totalamount_tv"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"/>
+
+
+
+                <TextView
+                    android:id="@+id/topay_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To Pay"
+                    android:layout_below="@+id/total_discount_tv"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/payamount_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹110"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/discount_amount_tv"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"/>
+
+
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/pay_btn"
+                    android:layout_below="@+id/bill_section_bg"
+                    android:layout_marginTop="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:id="@+id/payButton"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

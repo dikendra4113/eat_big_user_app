@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.waiterlessfood.model.PopularBrandActAdapter;
+import com.example.waiterlessfood.prevelent.Prevelents;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
@@ -50,7 +51,7 @@ public class Home2Activity extends AppCompatActivity {
         phone = intent.getStringExtra("phone");
         mRcPopular = findViewById(R.id.popular_recycler);
         mRcPopularBrnd = findViewById(R.id.popular_brands_recycler);
-
+        Paper.init(this);
         mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -161,6 +162,7 @@ public class Home2Activity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
                             intent.putExtra("seat",result.getContents());
                             intent.putExtra("phone",phone);
+                            Paper.book().write(Prevelents.previous_seat,result.getContents());
                             startActivity(intent);
 
                         }

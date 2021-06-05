@@ -76,7 +76,7 @@ public class CartAdapter extends FirebaseRecyclerAdapter<cartModel,CartAdapter.m
 
             cartModel.setTotal(""+overall_price);
             Log.i("price",cartModel.getTotal()+ "===="+ overall_price);
-            total_price.setText("Total Price:"+overall_price);
+            total_price.setText(""+overall_price);
 
 
         }else if(holder.pid.isEmpty()) {

@@ -12,4 +12,6 @@ public class Prevelents {
     public static final String passwordKey= "password";
     public static final String phone = "phone Number";
     public static final String previous_seat = "Seat Number";
+    public static final String imageUrl = "images";
+    public static  String current_hotel = "hotel";
 }

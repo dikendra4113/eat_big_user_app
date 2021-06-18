@@ -55,7 +55,6 @@ dependencies {
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
-    implementation 'com.squareup.picasso:picasso:2.71828'
 
     //my library
     implementation 'com.github.dikendra4113:My-Recycler-swipe:1.0'

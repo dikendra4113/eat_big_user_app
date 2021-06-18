@@ -3,6 +3,7 @@ package com.example.waiterlessfood.model;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,15 +38,18 @@ public class OrderAdapter extends FirebaseRecyclerAdapter<OrderModel,OrderAdapte
         holder.order_price.setText("Rs.: "+model.getPrice());
 //        holder.order_des.setText("Des: "+model.getDescription());
         holder.order_pname.setText(model.getPname()+" x "+model.getQuantity());
-//        holder.order_catagary.setText(model.getCatagary());
+
+        holder.restaurant_name.setText(model.getRestaurant_name());
         holder.order_date.setText("Date: "+model.getDate());
 //        holder.order_quantity.setText("Qantity: "+model.getQuantity());
-//        if(model.getStatus().equals("true")){
-//            holder.delivery_status.setText("Food Delivered: Yes");
-//        }
-//        if(model.getStatus().equals("false")){
-//            holder.delivery_status.setText("Food Delivered: No");
-//        }
+        if(model.getStatus().equals("Done")){
+            holder.statusImg.setImageResource(R.drawable.ic_done_24);
+            holder.delivery_status.setText("Delivery Done");
+        }
+        if(model.getStatus().equals("false")){
+            holder.statusImg.setImageResource(R.drawable.ic_wait);
+            holder.delivery_status.setText("Delivery: wait");
+        }
 //        if(model.getPaid().equals("Pending")){
 //            holder.order_payment.setTextColor(R.drawable.seat_alloted);
 //        }
@@ -60,19 +64,19 @@ public class OrderAdapter extends FirebaseRecyclerAdapter<OrderModel,OrderAdapte
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView order_pname,order_catagary,order_des,order_price,order_seat,order_date,order_quantity,order_payment,delivery_status;
+        TextView order_pname,restaurant_name,order_price,order_seat,order_date,order_quantity,order_payment,delivery_status;
+        ImageView statusImg;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
-            order_catagary = (TextView)itemView.findViewById(R.id.restaurant_name_tv);
+            restaurant_name = (TextView)itemView.findViewById(R.id.restaurant_name_tv);
             order_pname = (TextView)itemView.findViewById(R.id.order_item_tv);
 //            order_des = (TextView)itemView.findViewById(R.id.delivery_status_tv);
             order_price = (TextView)itemView.findViewById(R.id.total_amount_tv);
             order_seat = (TextView)itemView.findViewById(R.id.order_no_tv);
             order_date = (TextView)itemView.findViewById(R.id.order_date_tv);
-            order_quantity = (TextView)itemView.findViewById(R.id.order_quantity);
 //            order_payment = (TextView)itemView.findViewById(R.id.order_payment);
             delivery_status = (TextView)itemView.findViewById(R.id.delivery_status_tv);
-
+            statusImg = itemView.findViewById(R.id.done_ic);
 
         }
     }

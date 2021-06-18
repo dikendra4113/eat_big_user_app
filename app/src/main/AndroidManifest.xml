@@ -4,7 +4,9 @@
     package="com.example.waiterlessfood">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -15,9 +17,13 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".OfferActivity" />
+        <activity android:name=".MainProfileActivity" />
+        <activity android:name=".CartActivity" />
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".Home2Activity" />
         <activity android:name=".SeatActivity" />

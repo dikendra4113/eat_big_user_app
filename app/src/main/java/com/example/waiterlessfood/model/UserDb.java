@@ -1,10 +1,18 @@
 package com.example.waiterlessfood.model;
 
 public class UserDb {
-    private String phone,password,fullname,email;
+    private String phone,password,fullname,email,photo;
 
     public UserDb(){
 
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getPhone() {

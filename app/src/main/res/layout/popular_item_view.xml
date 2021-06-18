@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:background="@drawable/category_bg"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="22dp"
+    android:layout_margin="5dp"
+    android:layout_marginEnd="5dp">
+
+
+
+              <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+
+                     <RelativeLayout
+                         android:id="@+id/popular_add_btn"
+                         android:layout_width="84dp"
+                         android:layout_height="40dp"
+                        android:background="@drawable/add_btn"
+                         android:layout_alignParentStart="true"
+                         android:layout_alignParentBottom="true"
+                         android:backgroundTint="@color/yellow">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:textAlignment="center"
+                                android:layout_centerInParent="true"
+                                android:text="Rs 150/-"
+                                android:id="@+id/product_price"
+                                android:textStyle="bold"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginBottom="10dp"/>
+
+                     </RelativeLayout>
+
+
+
+
+
+                     <ImageView
+                         android:id="@+id/crown_ic"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/crown_ic"
+                         android:layout_marginStart="24dp"
+                         android:layout_marginTop="24dp"/>
+
+                     <TextView
+                         android:id="@+id/top_of"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="top of the week"
+                         android:layout_marginTop="25dp"
+                         android:layout_marginLeft="10dp"
+                         android:textSize="10sp"
+                         android:textColor="@color/black"
+                         android:layout_toRightOf="@id/crown_ic" />
+
+                     <TextView
+                         android:id="@+id/item_name_popolar"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="Farm House Pizza"
+                         android:textStyle="bold"
+                         android:textSize="20sp"
+                         android:layout_below="@id/crown_ic"
+                         android:layout_marginTop="5dp"
+                         android:layout_marginStart="24dp"/>
+
+
+                     <TextView
+                         android:id="@+id/weight_popular"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="Weight 500gm"
+                         android:textSize="8sp"
+                         android:layout_below="@id/item_name_popolar"
+                         android:layout_marginStart="24dp"/>
+
+
+                     <ImageView
+                         android:id="@+id/star_rating_ic"
+                         android:layout_width="14dp"
+                         android:layout_height="14dp"
+                         android:src="@drawable/ic_star_rate"
+                         app:tint="@color/black"
+                         android:layout_toRightOf="@+id/popular_add_btn"
+                         android:layout_below="@+id/weight_popular"
+                         android:layout_marginTop="19dp"
+                         android:layout_marginStart="20dp"/>
+
+                     <TextView
+                         android:id="@+id/popular_rating"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="5.0"
+                         android:textSize="11sp"
+                         android:textStyle="bold"
+                         android:layout_below="@+id/weight_popular"
+                         android:layout_toRightOf="@id/star_rating_ic"
+                         android:layout_marginTop="19dp"
+                         android:layout_marginStart="5dp"/>
+
+                     <de.hdodenhof.circleimageview.CircleImageView
+                         android:id="@+id/productImage"
+                         android:layout_width="120dp"
+                         android:layout_height="100dp"
+                         android:layout_alignParentEnd="true"
+                         android:layout_centerVertical="true"
+                         android:layout_marginEnd="10dp"
+                         android:src="@drawable/farmhouse" />
+
+
+              </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

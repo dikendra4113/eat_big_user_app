@@ -19,7 +19,14 @@
     <string name="title_activity_user_main">UserMainActivity</string>
 
 
-
-
     <string name="Rs">\u20B9</string>
+
+
+
+    <string-array name="hotels_option">Hotels
+        <item>Raju Daba</item>
+        <item>My Restaurant</item>
+        <item>Spice and Bite</item>
+        <item>CG04</item>
+    </string-array>
 </resources>

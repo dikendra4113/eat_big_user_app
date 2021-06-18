@@ -36,7 +36,7 @@ public class SeatAdapter extends FirebaseRecyclerAdapter<SeatModel, SeatAdapter.
     protected void onBindViewHolder(@NonNull SeatAdapter.myViewHolder holder, int position, @NonNull SeatModel model) {
        status= model.getAvailability();
         if(status.equals("available")){
-            holder.seatAvail.setBackgroundColor(R.drawable.seatcolor);
+            holder.seatAvail.setBackgroundResource(R.drawable.seatcolor);
         }
 
         holder.seatAvail.setText(model.getTableNo());

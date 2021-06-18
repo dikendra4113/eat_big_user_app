@@ -7,6 +7,14 @@
         android:title="My orders"
         android:icon="@drawable/menu_home"/>
     <item
+        android:id="@+id/menu_live_seat"
+        android:title="Live seat status"
+        android:icon="@drawable/ic_table"/>
+    <item
+        android:id="@+id/menu_call"
+        android:title="Book for party"
+        android:icon="@drawable/phone_ic"/>
+    <item
         android:id="@+id/menu_profile"
         android:title="Profile"
         android:icon="@drawable/person"/>

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,10 +17,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +69,9 @@ public class ProductCartDetailActivity extends AppCompatActivity {
     String saveCurrentDate,saveCurrentTime,randomKey;
     private  String paymentStatus;
     Dialog dialog;
+    ProgressDialog progressDialog;
     private String seat;
+    private String restaurant_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +85,18 @@ public class ProductCartDetailActivity extends AppCompatActivity {
         TextView couponEditText = findViewById(R.id.apply_coupon_et);
         TextView payamount = findViewById(R.id.payamount_tv);
         TextView discount_amount_tv = findViewById(R.id.discount_amount_tv);
-
-
+        ImageView discount_msg_bg = findViewById(R.id.discount_msg_bg);
+        TextView discount_msg_tv = findViewById(R.id.discount_msg_tv);
+        TextView cart_restaurant_tv = findViewById(R.id.cart_restaurant_tv);
 
         cart_recyclerView.setLayoutManager(new LinearLayoutManager(this));
         dialog = new Dialog(this);
         Paper.init(this);
+        progressDialog = new ProgressDialog(this);
         seat = Paper.book().read(previous_seat);
-        phone = getIntent().getStringExtra("phone");
+       phone = Paper.book().read(phoneKey);
+       restaurant_name = Paper.book().read(current_hotel);
+        cart_restaurant_tv.setText(restaurant_name);
         final FirebaseRecyclerOptions<cartModel> options =
                 new FirebaseRecyclerOptions.Builder<cartModel>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("CartList").child("User View").child(phone).child("Products"), cartModel.class)
@@ -104,7 +115,25 @@ public class ProductCartDetailActivity extends AppCompatActivity {
 
         randomKey = saveCurrentDate+saveCurrentTime;
         discount_amount_tv.setText("0");
-        payamount.setText(CartAdapter.overall_price);
+
+        total_price.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                payamount.setText(total_price.getText().toString());
+            }
+        });
+
+
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +154,7 @@ public class ProductCartDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
-                        paymentStatus = "Pending";
+                        paymentStatus = "false";
                         moveRecord();
 
 
@@ -155,19 +184,53 @@ public class ProductCartDetailActivity extends AppCompatActivity {
         couponApplyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgeessBar();
                 if(couponEditText.getText().toString().isEmpty()){
+                    progressDialog.dismiss();
                     Toast.makeText(ProductCartDetailActivity.this, "Please Enter Valid Coupon Code", Toast.LENGTH_SHORT).show();
                 }else {
+                        showProgeessBar();
                     if(couponEditText.getText().toString().equalsIgnoreCase("TRYNEW")){
                         int pay_amt = Integer.parseInt(total_price.getText().toString()) - 75;
                         payamount.setText(pay_amt+"");
                         discount_amount_tv.setText("-75");
+                        discount_msg_bg.setVisibility(View.VISIBLE);
+                        discount_msg_tv.setText("You have saved ₹75 on the bill");
+                        discount_msg_tv.setVisibility(View.VISIBLE);
                         amount = ""+pay_amt;
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                progressDialog.dismiss();
+                                Toast.makeText(ProductCartDetailActivity.this, "Coupon Applied Successfully", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }, 2000);
                     }else if(couponEditText.getText().toString().equalsIgnoreCase("GET50")){
                         int pay_amt = Integer.parseInt(total_price.getText().toString()) - 50;
                         payamount.setText(pay_amt+"");
                         amount = ""+pay_amt;
                         discount_amount_tv.setText("-50");
+                        discount_msg_bg.setVisibility(View.VISIBLE);
+                        discount_msg_tv.setText("You have saved ₹50 on the bill");
+                        discount_msg_tv.setVisibility(View.VISIBLE);
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                progressDialog.dismiss();
+                                Toast.makeText(ProductCartDetailActivity.this, "Coupon Applied Successfully", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }, 2000);
+                    }else {
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                progressDialog.dismiss();
+                                Toast.makeText(ProductCartDetailActivity.this, "Please Enter Valid Coupon", Toast.LENGTH_LONG).show();
+
+                            }
+                        }, 2000);
                     }
                 }
             }
@@ -175,11 +238,19 @@ public class ProductCartDetailActivity extends AppCompatActivity {
 
     }
 
+    private void showProgeessBar() {
+
+        progressDialog.setTitle("Verifying Coupon");
+        progressDialog.setMessage("Please wait, while we are updating your account information");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+    }
+
     private void moveRecord() {
         final DatabaseReference toPath = FirebaseDatabase.getInstance().getReference().child("Order").child("Users View").child(phone);
         final DatabaseReference fromPath = FirebaseDatabase.getInstance().getReference().child("CartList").child("User View").child(phone).child("Products");
         final DatabaseReference adminPath = FirebaseDatabase.getInstance().getReference().child("Order").child("Admins View");
-        final DatabaseReference seatPath = FirebaseDatabase.getInstance().getReference().child("Seats").child(seat);
+        final DatabaseReference seatPath = FirebaseDatabase.getInstance().getReference().child("Seats").child(restaurant_name).child(seat);
         ValueEventListener valueEventListener = new ValueEventListener() {
 
             @Override
@@ -198,7 +269,8 @@ public class ProductCartDetailActivity extends AppCompatActivity {
                     cartData.put("description",data.child("description").getValue().toString());
                     cartData.put("paid",paymentStatus);
                     cartData.put("user_contact",phone);
-                    cartData.put("status","false");
+                    cartData.put("restaurant_name",restaurant_name);
+                    cartData.put("status",paymentStatus);
                     final String pid = data.child("pid").getValue().toString();
                     Log.i("Pname",cartData.toString());
                     toPath.child(pid).updateChildren(cartData).addOnCompleteListener(new OnCompleteListener<Void>() {

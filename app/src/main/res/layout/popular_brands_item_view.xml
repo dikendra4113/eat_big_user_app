@@ -12,10 +12,11 @@
            android:layout_width="match_parent"
            android:layout_height="match_parent">
 
-              <ImageView
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:src="@drawable/mcdonalds_ic"
+              <de.hdodenhof.circleimageview.CircleImageView
+                  android:layout_width="70dp"
+                  android:layout_height="70dp"
+                  android:id="@+id/brandImg"
+                  android:src="@drawable/kfc"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toStartOf="parent"

@@ -13,6 +13,7 @@ public class OrderModel {
     private String pid;
     private String paid;
     private String status;
+    private String restaurant_name;
 
 
     public OrderModel(){
@@ -87,7 +88,13 @@ public class OrderModel {
         this.time = time;
     }
 
+    public String getRestaurant_name() {
+        return restaurant_name;
+    }
 
+    public void setRestaurant_name(String restaurant_name) {
+        this.restaurant_name = restaurant_name;
+    }
 
     public String getPid() {
         return pid;

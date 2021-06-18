@@ -125,6 +125,16 @@
             app:layout_constraintTop_toBottomOf="@+id/search_field"
             android:layout_below="@id/search_ic"/>
 
+
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/cat_tv">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,6 +145,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
                 android:orientation="horizontal">
                 <GridLayout
                     android:id="@+id/grid_layout"
@@ -220,6 +231,7 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="15dp"
+
                                 android:src="@drawable/snacks_ic" />
 
                             <TextView
@@ -320,13 +332,13 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="15dp"
-                                android:src="@drawable/hamburger" />
+                                android:src="@drawable/ic_pizza" />
 
                             <TextView
                                 android:id="@+id/food_title3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pizza"
+                                android:text="Pizzas"
                                 android:textStyle="bold"
                                 android:layout_below="@id/food_ic3"
                                 android:layout_centerHorizontal="true"/>
@@ -370,13 +382,13 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="15dp"
-                                android:src="@drawable/drinks_ic" />
+                                android:src="@drawable/ic_maggie" />
 
                             <TextView
                                 android:id="@+id/food_title4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Drinks"
+                                android:text="Meggies"
                                 android:textStyle="bold"
                                 android:layout_below="@id/food_ic4"
                                 android:layout_centerHorizontal="true"/>
@@ -420,13 +432,13 @@
                                 android:layout_marginLeft="15dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="15dp"
-                                android:src="@drawable/hamburger" />
+                                android:src="@drawable/ic_sandwich" />
 
                             <TextView
                                 android:id="@+id/food_title6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Pizza"
+                                android:text="Sandwitch"
                                 android:textStyle="bold"
                                 android:layout_below="@id/food_ic6"
                                 android:layout_centerHorizontal="true"/>
@@ -452,117 +464,122 @@
                 </GridLayout>
             </LinearLayout>
         </HorizontalScrollView>
-
-
-
-
-        <TextView
-            android:id="@+id/popular_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Popular"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:layout_below="@id/cat_scroll"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popular_recycler"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/popular_tv"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/popular_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popular_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popular_tv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
-        <TextView
-            android:id="@+id/popular_brand_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Popular Brands"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:layout_below="@id/popular_recycler"/>
+            <TextView
+                android:id="@+id/popular_brand_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular Brands"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:layout_below="@id/popular_recycler"/>
 
-        <TextView
-            android:id="@+id/popular_brand_tag_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Most ordered from around your locality"
-            android:textSize="10sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/popular_brand_tv"/>
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popular_brands_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/popular_brand_tag_tv"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <TextView
+                android:id="@+id/popular_brand_tag_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Most ordered from around your locality"
+                android:textSize="10sp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@id/popular_brand_tv"/>
 
 
-        <TextView
-            android:id="@+id/promoted_restaurants_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Promoted Restaurants"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:layout_below="@id/popular_brands_recycler"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popular_brands_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popular_brand_tag_tv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/promoted_restaurants_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/promoted_restaurants_tv"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-        <TextView
-            android:id="@+id/all_restaurants_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="All Restaurants Nearby"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:layout_below="@id/promoted_restaurants_recycler"/>
+            <TextView
+                android:id="@+id/promoted_restaurants_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promoted Restaurants"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:layout_below="@id/popular_brands_recycler"/>
 
 
-        <TextView
-            android:id="@+id/all_restaurants_tag_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Discover unique tastes near you"
-            android:textSize="10sp"
-            android:layout_marginStart="20dp"
-            android:layout_below="@id/all_restaurants_tv"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/promoted_restaurants_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/promoted_restaurants_tv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/all_restaurants_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/all_restaurants_tag_tv"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            <TextView
+                android:id="@+id/all_restaurants_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Restaurants Nearby"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:layout_below="@id/promoted_restaurants_recycler"/>
+
+
+            <TextView
+                android:id="@+id/all_restaurants_tag_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discover unique tastes near you"
+                android:textSize="10sp"
+                android:layout_marginStart="20dp"
+                android:layout_below="@id/all_restaurants_tv"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/all_restaurants_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/all_restaurants_tag_tv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

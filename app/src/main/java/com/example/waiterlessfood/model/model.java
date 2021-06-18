@@ -24,7 +24,7 @@ public class model {
 
     public String quantity;
 
-    model() {
+    public model() {
 
     }
 

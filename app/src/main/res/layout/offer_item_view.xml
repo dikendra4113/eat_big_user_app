@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:background="@drawable/category_bg"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="22dp"
+    android:layout_margin="20dp"
+    android:layout_marginEnd="20dp">
+
+
+
+              <RelativeLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+
+                 <ImageView
+                     android:id="@+id/forward_btn"
+                     android:layout_width="84dp"
+                     android:layout_height="40dp"
+
+                     android:layout_alignParentEnd="true"
+                     android:layout_alignParentBottom="true"
+                     app:tint="@color/yellow"/>
+
+
+                 <ImageView
+                     android:layout_width="14dp"
+                     android:layout_height="14dp"
+                     android:src="@drawable/buttonarrow_icon"
+                     android:textStyle="bold"
+                     android:layout_alignStart="@+id/forward_btn"
+                     android:layout_alignEnd="@id/forward_btn"
+                     android:layout_alignTop="@id/forward_btn"
+                     android:layout_marginTop="12dp"
+                     app:tint="@color/black" />
+
+
+                 <ImageView
+                     android:id="@+id/restaurant_ic"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/raju_dhaba_iv"
+                     android:layout_centerVertical="true"
+                     android:layout_alignParentStart="true"/>
+
+                 <TextView
+                     android:id="@+id/restaurant_name_tv"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Raju Dhaba (Since 1968)"
+                     android:textStyle="bold"
+                     android:textSize="16sp"
+                     android:textColor="@color/black"
+                     android:layout_toRightOf="@id/restaurant_ic"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginLeft="10dp"/>
+
+                 <TextView
+                     android:id="@+id/category_available_tv"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Indian, Desserts, Snacks, Beverages"
+                     android:textSize="8sp"
+                     android:layout_below="@id/restaurant_name_tv"
+                     android:layout_toRightOf="@+id/restaurant_ic"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="3dp"/>
+
+
+
+                 <TextView
+                     android:id="@+id/location_tv"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Samta Colony, Raipur"
+                     android:textSize="8sp"
+                     android:layout_below="@id/category_available_tv"
+                     android:layout_toRightOf="@+id/restaurant_ic"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="3dp"/>
+
+                 <ImageView
+                     android:id="@+id/line_restaurant"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/actionbar_bg"
+                     android:layout_toRightOf="@id/restaurant_ic"
+                     android:layout_alignParentEnd="true"
+                     android:layout_below="@id/location_tv"
+                     android:layout_marginTop="10dp"
+                     android:layout_marginStart="10dp"
+                     android:layout_marginEnd="10dp"
+                     app:tint="@color/text_grey" />
+
+                 <ImageView
+                      android:id="@+id/percent_ic"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:src="@drawable/percent_ic"
+                      android:layout_below="@id/line_restaurant"
+                      android:layout_toRightOf="@id/restaurant_ic"
+                      android:layout_marginLeft="10dp"
+                      android:layout_marginTop="10dp"/>
+
+                 <TextView
+                     android:id="@+id/use_tv"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Use"
+                      android:textColor="@color/black"
+                      android:layout_toRightOf="@id/percent_ic"
+                      android:layout_below="@+id/line_restaurant"
+                      android:textSize="10sp"
+                      android:layout_marginLeft="15dp"
+                      android:layout_marginTop="9dp"/>
+
+                 <TextView
+                      android:id="@+id/coupon_code"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="TRYNEW"
+                      android:textColor="@color/black"
+                      android:layout_toRightOf="@id/use_tv"
+                      android:layout_below="@+id/line_restaurant"
+                      android:textSize="10sp"
+                      android:layout_marginLeft="05dp"
+                      android:layout_marginTop="9dp"/>
+
+
+                 <ImageView
+                      android:id="@+id/rating_start_ic"
+                      android:layout_width="14dp"
+                      android:layout_height="14dp"
+                      android:src="@drawable/ic_star_rate"
+                      android:layout_toRightOf="@id/use_tv"
+                      android:layout_alignParentBottom="true"
+                      android:layout_marginBottom="10dp"
+                      app:tint="@color/black"
+                     android:layout_marginLeft="20dp"/>
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="4.7"
+                     android:layout_toRightOf="@id/rating_start_ic"
+                     android:textSize="10sp"
+                     android:textStyle="bold"
+                     android:textColor="@color/black"
+                     android:layout_alignParentBottom="true"
+                     android:layout_marginBottom="10dp"
+                     android:layout_marginLeft="5dp"/>
+
+
+
+                 <ImageView
+                     android:id="@+id/discount_bg"
+                     android:layout_width="87dp"
+                     android:layout_height="30dp"
+                     android:src="@drawable/category_bg"
+                     app:tint="@color/yellow"
+                     android:layout_alignStart="@+id/restaurant_ic"
+                     android:layout_alignParentBottom="true"
+                     android:layout_marginLeft="23dp"/>
+
+
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="50% OFF"
+                     android:textColor="@color/white"
+                     android:id="@+id/offer_name"
+                     android:textStyle="bold"
+                     android:layout_alignStart="@id/discount_bg"
+                     android:layout_alignTop="@+id/discount_bg"
+                     android:layout_marginLeft="15dp"
+                     android:layout_marginTop="5dp"/>
+
+
+
+              </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

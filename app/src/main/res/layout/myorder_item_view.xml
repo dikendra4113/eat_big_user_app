@@ -39,7 +39,7 @@
                          android:id="@+id/restaurant_name_tv"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
-                         android:text="Ramdev's Khana Khazana - (RKC)"
+
                          android:textStyle="bold"
                          android:textSize="12sp"
                          android:textColor="@color/black"
@@ -78,12 +78,17 @@
                          android:layout_centerHorizontal="true"
                          android:layout_marginTop="5dp"/>
 
-                     <ImageView
+                     <de.hdodenhof.circleimageview.CircleImageView
                          android:id="@+id/done_ic"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
-                         android:src="@drawable/done_ic"
+                         android:src="@drawable/ic_done_24"
+                         android:background="@color/grey_white"
                          android:layout_alignParentEnd="true"
+                         app:civ_border_color="@color/grey_light"
+                         app:civ_border_width="0.5dp"
+                         android:padding="0.5dp"
+                         android:layout_marginEnd="5dp"
                          android:layout_below="@+id/order_tv"
                          android:layout_marginTop="6dp"/>
 
